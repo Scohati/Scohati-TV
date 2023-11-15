@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../views/Home'
 import Contato from '../views/Contato'
 import Footer from '../components/Footer'
+import Filmes from '../views/Filmes'
 
 const Layout: React.FC = () => {
 
@@ -12,9 +13,10 @@ const Layout: React.FC = () => {
             <section className='h-screen'>
                 <HeaderMegaMenu />
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/contato" element={<Contato />} />
-                    <Route path='*' element={<Navigate to={'/'}/>}/>
+                    <Route path="/filmes" element={<Filmes />}/>
+                    <Route path="*" element={<Navigate to={'/'}/>}/>
                 </Routes>
                 <Footer />
             </section>
