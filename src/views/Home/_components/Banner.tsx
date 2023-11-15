@@ -3,7 +3,7 @@ import { Skeleton } from "@mantine/core";
 import { getEmCartazService } from "../../../services/Filmes";
 import Slider from "../../../components/Carousel";
 
-const HomeCarousel: React.FC = () => {
+const HomeBanner: React.FC = () => {
     const [carregando, setCarregando] = useState<boolean>(true)
     const [filmesEmCartaz, setFilmesEmCartaz] = useState<any>([])
 
@@ -33,4 +33,4 @@ const HomeCarousel: React.FC = () => {
     )
 }
 
-export default HomeCarousel
+export default HomeBanner
