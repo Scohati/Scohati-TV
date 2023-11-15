@@ -3,11 +3,7 @@ import { Skeleton } from "@mantine/core";
 import { getEmCartaz } from "../../../services/Filmes";
 import Slider from "../../../components/Carousel";
 
-interface HomeCarouselInterface {
-    page: number
-}
-
-const HomeCarousel: React.FC<HomeCarouselInterface> = ({ page }) => {
+const HomeCarousel: React.FC = () => {
     const [carregando, setCarregando] = useState<boolean>(true)
     const [filmesEmCartaz, setFilmesEmCartaz] = useState<any>([])
 
