@@ -39,10 +39,10 @@ const AvaliadosComponent: React.FC = () => {
             </div>
             <section className='w-full max-w-[1600px] h-[500px] justify-center flex gap-4 mb-8'>
                 <section className='w-2/5 h-full flex flex-col items-between gap-4'>
-                    <div className='h-full h-[241.7px]'>
+                    <div className='h-[242px]'>
                         {renderAvaliados(2)}
                     </div>
-                    <div className='h-full h-[241.7px]'>
+                    <div className='h-[242px]'>
                         {renderAvaliados(1)}
                     </div>
                 </section>
