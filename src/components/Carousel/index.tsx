@@ -34,7 +34,7 @@ const Slider: React.FC<SliderProps> = ({ data, pagination }) => {
   const renderLancamentos = data.map((item, index) => {
       return (
           <div className="w-full h-full" key={index}>
-              <SwiperSlide className='relative'>
+              <SwiperSlide className='relative cursor-pointer'>
                 <Image src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`}/>
 
                 <span className='absolute top-5 right-5 flex items-center gap-1 bg-black bg-opacity-50 rounded-xl px-4'>

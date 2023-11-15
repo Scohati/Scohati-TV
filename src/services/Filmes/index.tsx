@@ -6,12 +6,14 @@ async function getAbstract(url: string)  {
 }
 
 
-export const getEmCartaz = async (page: number) => {
-    const resp = await getAbstract(`movie/now_playing?language=pt-br&page=${page}`)
-    return resp
+export const getEmCartazService = async (page: number) => {
+    return await getAbstract(`movie/now_playing?language=pt-br&page=${page}`)
 }
 
-export const populares = async (page: number) => {
-    let resp = await getAbstract(`movie/popular?language=pt-BR&page=${page}`)
-    return resp
+export const popularesService = async (page: number) => {
+    return await getAbstract(`movie/popular?language=pt-BR&page=${page}`)
+}
+
+export const avaliadosService = async (page: number) => {
+    return await getAbstract(`movie/top_rated?language=pt-BR&page=${page}`)
 }

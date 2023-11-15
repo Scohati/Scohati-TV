@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Skeleton } from "@mantine/core";
-import { getEmCartaz } from "../../../services/Filmes";
+import { getEmCartazService } from "../../../services/Filmes";
 import Slider from "../../../components/Carousel";
 
 const HomeCarousel: React.FC = () => {
@@ -14,7 +14,7 @@ const HomeCarousel: React.FC = () => {
     
     async function get() {
         try {
-            const { results } = await getEmCartaz(1)
+            const { results } = await getEmCartazService(1)
             setFilmesEmCartaz([...results])
             setCarregando(false)
         } catch (error: any) {

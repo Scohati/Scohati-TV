@@ -1,7 +1,7 @@
 import { Image, Skeleton } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import ScrollCarousel from "scroll-carousel";
-import { populares } from "../../../../services/Filmes";
+import { popularesService } from "../../../../services/Filmes";
 
 import './style.css'
 
@@ -14,7 +14,7 @@ const ScrollCarouselComponent: React.FC = () => {
   }, [])
   
   const get = async () => {
-    const resp = await populares(1)
+    const resp = await popularesService(1)
     setFilmesPopulares(resp?.results)
     setCarregando(false)
     setTimeout(() => {

@@ -1,6 +1,6 @@
 import { Skeleton } from "@mantine/core"
 import React, { useEffect, useState } from "react"
-import { getEmCartaz } from "../../../services/Filmes"
+import { getEmCartazService } from "../../../services/Filmes"
 import Slider from "../../../components/Carousel"
 
 
@@ -16,7 +16,7 @@ const LancamentosComponent: React.FC = () => {
 
     const getLancamentos = async () => {
         const responses = await Promise.all(pages.map(async (page) => {
-            return await getEmCartaz(page)
+            return await getEmCartazService(page)
         }))
 
         setLancamentos(responses)
@@ -37,18 +37,18 @@ const LancamentosComponent: React.FC = () => {
             <h2 className='font-bold text-white text-2xl'>| Lançamentos</h2>
             <button>Ver todos</button>
             </div>
-            <section className='w-full max-w-[1600px] h-[500px] flex justify-center gap-4 mb-8'>
-            <div className='w-3/5 h-500px'>
-                {renderLancamentos(0)}
-            </div>
-            <section className='w-2/5 h-full flex flex-col gap-4'>
-                <div className='h-[242px]'>
-                    {renderLancamentos(1)}
+            <section className='w-full max-w-[1600px] h-[500px] flex justify-center gap-4'>
+                <div className='w-3/5 h-[500px]'>
+                    {renderLancamentos(0)}
                 </div>
-                <div className='h-[242px]'>
-                    {renderLancamentos(2)}
-                </div>
-            </section>
+                <section className='w-2/5 h-full flex flex-col gap-4'>
+                    <div className='h-[242px]'>
+                        {renderLancamentos(1)}
+                    </div>
+                    <div className='h-[242px]'>
+                        {renderLancamentos(2)}
+                    </div>
+                </section>
             </section>
         </section>
     )
