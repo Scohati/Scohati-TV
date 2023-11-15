@@ -4,6 +4,7 @@ import ScrollCarousel from "scroll-carousel";
 import { popularesService } from "../../../../services/Filmes";
 
 import './style.css'
+import { Link } from "react-router-dom";
 
 const ScrollCarouselComponent: React.FC = () => {
   const [carregando, setCarregando] = useState(true);
@@ -30,9 +31,11 @@ const ScrollCarouselComponent: React.FC = () => {
   const scrollCarousel = carregando ? <Skeleton className="h-full" radius={"md"} /> : (
     filmesPopulares.map((item: any) => {
       return (
-        <div key={item?.id} className="w-[230px] h-[290px] bg-[#fcfcfc] rounded-xl overflow-hidden cursor-pointer">
-          <Image src={`https://image.tmdb.org/t/p/original${item?.poster_path}`} className="w-full h-full"/>
-        </div>
+        <Link to={`filme/${item.id}`}>
+          <div key={item?.id} className="w-[230px] h-[290px] bg-[#fcfcfc] rounded-xl overflow-hidden cursor-pointer">
+            <Image src={`https://image.tmdb.org/t/p/original${item?.poster_path}`} className="w-full h-full"/>
+          </div>
+        </Link>
       );
     })
   );

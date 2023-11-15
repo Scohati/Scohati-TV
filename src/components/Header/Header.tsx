@@ -165,7 +165,7 @@ export function HeaderMegaMenu() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
   const icon = <IconSearch style={{ width: rem(16), height: rem(16) }} />;
-  const [teste, setTeste] = useState<any>([])
+  const [genres, setGenres] = useState<any>([])
 
   useEffect(() => {
     getCategoriasFunc()
@@ -173,27 +173,28 @@ export function HeaderMegaMenu() {
   
   const getCategoriasFunc = async () => {
     const { data } = await getCategorias()
-    setTeste(data.genres)
+    setGenres(data.genres)
   }
 
-  const links = teste.map((item) => {
-    item.title = 'Dioguinhu'
+  const links = genres.map((item: any) => {
     return (
-    <UnstyledButton className={classes.subLink} key={item.id} p={6}>
-      <Group wrap="nowrap" align="center">
-        <ThemeIcon size={34} variant="default" radius="md">
-          <IconCategory2
-            style={{ width: rem(22), height: rem(22) }}
-            color={theme.colors.orange[8]}
-          />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" fw={500} c={theme.colors.dark[1]}>
-            {item.name}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
+    <Link to={`categoria/${item.id}`}>
+      <UnstyledButton className={classes.subLink} key={item.id} p={6}>
+        <Group wrap="nowrap" align="center">
+          <ThemeIcon size={34} variant="default" radius="md">
+            <IconCategory2
+              style={{ width: rem(22), height: rem(22) }}
+              color={theme.colors.orange[8]}
+            />
+          </ThemeIcon>
+          <div>
+            <Text size="sm" fw={500} c={theme.colors.dark[1]}>
+              {item.name}
+            </Text>
+          </div>
+        </Group>
+      </UnstyledButton>
+    </Link>
     )
 });
 
@@ -201,7 +202,9 @@ export function HeaderMegaMenu() {
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%" className="px-[12vw]">
-          <h2 className="w-[220px] font-bold text-white">Scohati TV</h2>
+          <Link to={'/'}>
+            <h2 className="w-[220px] font-bold text-white cursor-pointer">Scohati TV</h2>
+          </Link>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <Link to={"/"} className={classes.link}>
@@ -249,7 +252,9 @@ export function HeaderMegaMenu() {
                         Encontre novos filmes
                       </Text>
                     </div>
-                    <Button variant="default">Ver todos os filmes</Button>
+                    <Link to={'filmes'}>
+                      <Button variant="default">Ver todos os filmes</Button>
+                    </Link>
                   </Group>
                 </div>
               </HoverCard.Dropdown>

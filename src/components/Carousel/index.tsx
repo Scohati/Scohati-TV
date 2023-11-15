@@ -7,6 +7,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import './carousel.style.css'
+import { Link } from 'react-router-dom'
 
 
 interface PropsObj {
@@ -35,19 +36,20 @@ const Slider: React.FC<SliderProps> = ({ data, pagination }) => {
       return (
           <div className="w-full h-full" key={index}>
               <SwiperSlide className='relative cursor-pointer'>
-                <Image src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`}/>
+                <Link to={`filme/${item.id}`}>
+                  <Image src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`}/>
 
-                <span className='absolute top-5 right-5 flex items-center gap-1 bg-black bg-opacity-50 rounded-xl px-4'>
-                  <IconStarFilled className='w-[15px] text-yellow-500'/>
-                  <p className='text-sm text-white font-bold'>{item?.vote_average.toFixed(1)}</p>
-                </span>
+                  <span className='absolute top-5 right-5 flex items-center gap-1 bg-black bg-opacity-50 rounded-xl px-4'>
+                    <IconStarFilled className='w-[15px] text-yellow-500'/>
+                    <p className='text-sm text-white font-bold'>{item?.vote_average.toFixed(1)}</p>
+                  </span>
 
-                <h4
-                  className='text-2xl font-bold text-white absolute bottom-5 left-14 bg-black bg-opacity-50 rounded-xl px-4 py-1'
-                >
-                  {item?.title}
-                </h4>
-
+                  <h4
+                    className='text-2xl font-bold text-white absolute bottom-5 left-14 bg-black bg-opacity-50 rounded-xl px-4 py-1'
+                  >
+                    {item?.title}
+                  </h4>
+                </Link>
               </SwiperSlide>
           </div>
       )
