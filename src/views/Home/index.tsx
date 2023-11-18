@@ -6,7 +6,7 @@ import AvaliadosComponent from './_components/Avaliados';
 
 const Home: React.FC = () => {
   return (
-    <section className='w-full my-12 px-[12vw] flex flex-col gap-8'>
+    <section className='w-full my-12 px-[6vw] flex flex-col gap-8'>
       <HomeBanner/>
       <ScrollCarouselComponent />
       <AvaliadosComponent />
