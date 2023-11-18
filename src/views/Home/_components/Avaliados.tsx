@@ -15,6 +15,7 @@ const AvaliadosComponent: React.FC = () => {
     }, [])
 
     const getLancamentos = async () => {
+        setCarregando(true)
         const responses = await Promise.all(pages.map(async (page) => {
             return await avaliadosService(page)
         }))
@@ -26,7 +27,7 @@ const AvaliadosComponent: React.FC = () => {
     const renderAvaliados = (page: number) => {
         return (
             <div className="w-full h-full">
-                {carregando ? <Skeleton className="h-full" radius={"md"} /> : <Slider data={avaliados[page]?.results} pagination={false}/>}
+                {carregando ? <Skeleton className="h-full" radius={"md"} /> : <Slider data={avaliados[page]?.results} pagination={false} itemsPorSlide={1}/>}
             </div>
         );
     };
@@ -37,7 +38,7 @@ const AvaliadosComponent: React.FC = () => {
                 <h2 className='font-bold text-white text-2xl'>| Bem Avaliados</h2>
                 <button>Ver todos</button>
             </div>
-            <section className='w-full max-w-[1600px] h-[500px] justify-center flex gap-4 mb-8'>
+            <section className='w-full h-[500px] justify-center flex gap-4 mb-8'>
                 <section className='w-2/5 h-full flex flex-col items-between gap-4'>
                     <div className='h-[242px]'>
                         {renderAvaliados(2)}

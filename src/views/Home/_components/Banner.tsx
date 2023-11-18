@@ -14,6 +14,7 @@ const HomeBanner: React.FC = () => {
     
     async function get() {
         try {
+            setCarregando(true)
             const { results } = await getEmCartazService(1)
             setFilmesEmCartaz([...results])
             setCarregando(false)
@@ -24,10 +25,10 @@ const HomeBanner: React.FC = () => {
 
     const slider = carregando 
                 ? <Skeleton className='h-full' radius={'md'}/> 
-                : <Slider data={filmesEmCartaz} pagination={true}/>
+                : <Slider data={filmesEmCartaz} pagination={true} itemsPorSlide={1}/>
     
     return (
-        <section className='w-full max-w-[1600px] h-[500px] mt-8'>
+        <section className='w-full h-[500px] mt-8'>
             { slider }
         </section>
     )
