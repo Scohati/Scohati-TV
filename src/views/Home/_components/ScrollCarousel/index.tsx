@@ -15,6 +15,7 @@ const ScrollCarouselComponent: React.FC = () => {
   }, [])
   
   const get = async () => {
+    setCarregando(true)
     const resp = await popularesService(1)
     setFilmesPopulares(resp?.results)
     setCarregando(false)
@@ -31,7 +32,7 @@ const ScrollCarouselComponent: React.FC = () => {
   const scrollCarousel = carregando ? <Skeleton className="h-full" radius={"md"} /> : (
     filmesPopulares.map((item: any) => {
       return (
-        <Link to={`filme/${item.id}`}>
+        <Link key={item?.id} to={`filme/${item.id}`}>
           <div key={item?.id} className="w-[230px] h-[290px] bg-[#fcfcfc] rounded-xl overflow-hidden cursor-pointer">
             <Image src={`https://image.tmdb.org/t/p/original${item?.poster_path}`} className="w-full h-full"/>
           </div>
@@ -42,7 +43,7 @@ const ScrollCarouselComponent: React.FC = () => {
 
 
   return (
-    <div className="my-carousel flex justify-between w-full h-[290px] my-12 gap-2 overflow-hidden">
+    <div className="my-carousel flex justify-between w-full h-[290px] my-12 gap-2 overflow-hidden rounded-xl">
       {scrollCarousel}
     </div>
   );
